@@ -1,0 +1,22 @@
+ERKLÄRUNG:
+- E1 ist Host
+- E2 ist config
+- A1 Log/Debug/Output
+- 1W Kommunikation ist in ow_comm
+- Baustein startet ow_comm, dann __loop, discover, _refresh und __wait
+- iButton und IO Thread starten verzögert, laufen erst richtig (xyz_loop()) wenn discover beendet wurde
+- discover beihnhaltet _refresh und lädt die gefunden Sensoren in das dict self.tm{}
+- in self.tm{} sind alle Daten zum Sensor jederzeit abrufbar
+
+TODO:
+- Abfangen von Verbindungsverlusten während der Laufzeit
+- Optimierung der self._socket Liste - evtl. als Dict ? Dynamisch!
+- IO-Loop auswerten (Input/Output vs. PIO/sensed)
+- Auswertung von self.tm{} um Verzögerungen bzw. I/O etc. auszuwerten
+- Konfiguration der Sensoren (Input? , Output? , iButton Busmaster? , iButton-IDs? , etc.)
+- Konfiguration des Outputs
+- Entfernen von self.global_sensors und Umbau auf self.tm
+- Cleanup von Debug, Print, Output
+- Ersetzen einiger Stringmanipulationen/Vergleiche durch Regex
+
+DIES IST NUR EIN GRUNDGERÜST FÜR EINEN BAUSTEIN!
